@@ -16,7 +16,7 @@ const chat = (state = '', action) => {
       return [ ...state, message ]
     case TOGGLE_DISPLAY_STATE:
       return state.map((message) => {
-        if (message['id'] == action.messageId) {
+        if (message['id'] === action.messageId) {
           message['displayState'] = !message['displayState']
         }
         return message

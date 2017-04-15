@@ -14,10 +14,19 @@ class MessageForm extends Component {
     })
   }
 
+  onCancel() {
+    const { actions, message } = this.props
+    console.log(actions)
+    actions.toggleDisplayState(message.id)
+  }
+
   render() {
+    const { message } = this.props
+    const cancelButton = message ? <input type="button" value="キャンセル" onClick={this.onCancel.bind(this)}/> : ''
     return (
       <div>
         <textarea rows="4" cols="40" ref={(input) => { this.textMessage = input }} />
+        {cancelButton}
         <input type="button" value="登録" onClick={this.onSubmit.bind(this)}/>
       </div>
     )

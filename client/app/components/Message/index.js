@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Jquery from 'jquery'
 
 class Message extends Component {
   onChange() {
@@ -8,7 +9,13 @@ class Message extends Component {
 
   onDelete() {
     const { actions, messageId } = this.props
-    actions.deleteMessage(messageId)
+    Jquery.ajax({
+      type: 'DELETE',
+      url: `/api/messages/${messageId}`,
+      success: ((data) => {
+        actions.deleteMessage(messageId)
+      })
+    })
   }
 
   render() {

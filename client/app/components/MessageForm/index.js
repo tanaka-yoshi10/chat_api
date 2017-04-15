@@ -3,7 +3,21 @@ import Jquery from 'jquery'
 
 class MessageForm extends Component {
   onSubmit() {
-    const { actions } = this.props
+    const { actions, message } = this.props
+    if (message) {
+      Jquery.ajax({
+        type: 'PATCH',
+        url: '/api/messages/' + message.id,
+        data: {
+          message: {text: this.textMessage.value}
+        },
+        success: ((data) => {
+          actions.updateMessage(data)
+        })
+      })
+      return
+    }
+
     Jquery.ajax({
       type: 'POST',
       url: '/api/messages',

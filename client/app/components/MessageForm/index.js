@@ -24,7 +24,10 @@ class MessageForm extends Component {
       data: {
         message: {text: this.textMessage.value}
       },
-      success: ((data) => actions.addMessage(data))
+      success: ((data) => {
+        actions.addMessage(data)
+        this.textMessage.value = ''
+      })
     })
   }
 

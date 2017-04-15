@@ -16,7 +16,6 @@ class MessageForm extends Component {
 
   onCancel() {
     const { actions, message } = this.props
-    console.log(actions)
     actions.toggleDisplayState(message.id)
   }
 

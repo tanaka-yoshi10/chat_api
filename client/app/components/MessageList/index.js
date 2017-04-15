@@ -15,7 +15,7 @@ class MessageList extends Component {
 
   renderMessage(actions, message) {
     return (
-      message.displayState ? <Message key={message.id} text={message.text} /> : <MessageForm key={message.id} message={message} actions={actions} /> 
+      message.displayState ? <Message key={message.id} text={message.text} messageId={message.id} actions={actions}/> : <MessageForm key={message.id} message={message} actions={actions} /> 
     )
   }
 

@@ -1,9 +1,7 @@
-// import React from 'react'
 import React, { Component } from 'react'
 
 class Message extends Component {
-// const Message = ({text}) => {
-  onChange() {
+ onChange() {
     const { actions, messageId } = this.props
     actions.toggleDisplayState(messageId)
   }

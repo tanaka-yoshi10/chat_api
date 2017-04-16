@@ -7,16 +7,14 @@ const chat = (state = '', action) => {
   switch (action.type) {
     case CREATE_MESSAGE_LIST:
       return action.messages.map((message) => {
-        message['displayState'] = true
+        message.displayState = true
         return message
       })
     case ADD_MESSAGE:
       const message = action.message
-      message['displayState'] = true
+      message.displayState = true
       return [ ...state, message ]
-
     case UPDATE_MESSAGE:
-      console.log(action.message)
       return state.map((old_message) => {
         if (old_message.id === action.message.id) {
           const new_message = action.message
@@ -27,17 +25,16 @@ const chat = (state = '', action) => {
           return old_message
         }
       })
-
     case TOGGLE_DISPLAY_STATE:
       return state.map((message) => {
-        if (message['id'] === action.messageId) {
-          message['displayState'] = !message['displayState']
+        if (message.id === action.messageId) {
+          message.displayState = !message.displayState
         }
         return message
       })
     case DELETE_MESSAGE:
       return state.filter((message) => {
-        return message['id'] !== action.messageId
+        return message.id !== action.messageId
       })
     default:
       return state
